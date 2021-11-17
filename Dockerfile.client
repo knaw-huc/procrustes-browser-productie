@@ -1,3 +1,2 @@
-FROM httpd:2.4
-COPY ./src/frontend /usr/local/apache2/htdocs/
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+FROM nginx:latest
+COPY ./src/frontend /usr/share/nginx/html
