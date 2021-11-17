@@ -8,7 +8,7 @@ from handlers import timbuctoo
 app = Flask(__name__)
 
 config = {
-    "url" : "elastic",
+    "url" : "procrustes_elastic",
     "port" : "9200",
     "doc_type" : "procrustes"
 }
