@@ -25,6 +25,9 @@ services:
       - discovery.type=single-node
     ports:
       - 9200:9200
+    networks:
+      - procrustus_network
+
     volumes:
       - /data/docker/volumes/ga_es/_data:/usr/share/elasticsearch/data
       - /home/robz/:/home
@@ -34,6 +37,7 @@ services:
       context: ./
       dockerfile: Dockerfile.api
     container_name: procrustes_service
+    networks:
+      - procrustus_network
     volumes:
       - /home/robz/:/home
-    
