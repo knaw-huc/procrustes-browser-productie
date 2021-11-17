@@ -1,0 +1,46 @@
+version: '2'
+
+networks:
+  procrustus_network:
+    external:
+      name: nginxproxynetwork
+  ga:
+    external:
+      name: gaProcrustus
+
+services:
+  procrustes-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile.api
+    container_name: procrustes_service
+    environment:
+      - VIRTUAL_HOST=ga.sd.di.huc.knaw.nl
+    volumes:
+      - /home/robz/:/home
+    networks:
+      - ga
+      - procrustus_network
+
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.2
+    container_name: ga_procrustus_es
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    volumes:
+      - /data/docker/volumes/ga_es/_data:/usr/share/elasticsearch/data
+      - /home/robz/:/home
+    networks:
+      - ga
+
+  pyservice:
+    build:
+      context: ./
+      dockerfile: Dockerfile.api
+    container_name: procrustes_service
+    volumes:
+      - /home/robz/:/home
+    networks:
+      - ga
