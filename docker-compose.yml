@@ -15,6 +15,8 @@ services:
       - VIRTUAL_HOST=ga.sd.di.huc.knaw.nl
     volumes:
       - /home/robz/:/home
+    ports:
+      - 8089:80
     networks:
       - procrustus_network
 
@@ -25,7 +27,6 @@ services:
       - discovery.type=single-node
     networks:
       - procrustus_network
-
     volumes:
       - /data/docker/volumes/ga_es/_data:/usr/share/elasticsearch/data
       - /home/robz/:/home
