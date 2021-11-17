@@ -1,2 +1,2 @@
-FROM nginx:latest
-COPY ./src/frontend /usr/share/nginx/html
+FROM httpd:2.4
+COPY ./src/frontend /usr/local/apache2/htdocs/
