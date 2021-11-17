@@ -4,9 +4,6 @@ networks:
   procrustus_network:
     external:
       name: nginxproxynetwork
-  ga:
-    external:
-      name: gaProcrustus
 
 services:
   procrustes-app:
@@ -19,7 +16,6 @@ services:
     volumes:
       - /home/robz/:/home
     networks:
-      - ga
       - procrustus_network
 
   elastic:
@@ -33,8 +29,7 @@ services:
       - /data/docker/volumes/ga_es/_data:/usr/share/elasticsearch/data
       - /home/robz/:/home
     networks:
-      - ga
-
+      - procrustus_network
   pyservice:
     build:
       context: ./
@@ -43,4 +38,4 @@ services:
     volumes:
       - /home/robz/:/home
     networks:
-      - ga
+      - procrustus_network
