@@ -34,7 +34,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.api
-    container_name: procrustes_service
+    container_name: pyservice
     networks:
       - procrustus_network
     volumes:
