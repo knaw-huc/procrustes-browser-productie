@@ -10,7 +10,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.api
-    container_name: procrustes_service
+    container_name: procrustes_app
     environment:
       - VIRTUAL_HOST=ga.sd.di.huc.knaw.nl
     volumes:
