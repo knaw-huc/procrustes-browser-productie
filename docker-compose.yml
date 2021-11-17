@@ -16,7 +16,7 @@ services:
     volumes:
       - /home/robz/:/home
     ports:
-      - 8089:80
+      - 8666:80
     networks:
       - procrustus_network
 
